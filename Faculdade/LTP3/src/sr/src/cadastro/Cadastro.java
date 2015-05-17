@@ -37,7 +37,7 @@ public class Cadastro {
 					return objCliente;
 				}
 			}
-			throw new SisVendasException("Não existe cliente para o código informado!");
+			throw new SisVendasException("NÃ£o existe cliente para o cÃ³digo informado!");
 		}
 		
 		
@@ -48,7 +48,7 @@ public class Cadastro {
 					return objCliente;
 				}
 			}
-			throw new SisVendasException("Não existe cliente para o cpf informado!");
+			throw new SisVendasException("NÃ£o existe cliente para o cpf informado!");
 		}
 		public static Cliente buscarClienteNome (String nome) throws SisVendasException {
 			for(Cliente objCliente : clientes){
@@ -56,7 +56,7 @@ public class Cadastro {
 					return objCliente;
 				}
 			}
-			throw new SisVendasException("Não existe cliente para o cpf informado!");
+			throw new SisVendasException("NÃ£o existe cliente para o cpf informado!");
 		}
 		
 		public static ArrayList<Cliente> buscarClienteNomeOrdem (String nome) throws SisVendasException {
@@ -77,7 +77,7 @@ public class Cadastro {
 		
 		
 		
-		//Métodos para produto
+		//MÃ©todos para produto
 		public static void incluirProduto (Produto objProduto) {
 			produto.add(objProduto);
 		}
@@ -94,7 +94,7 @@ public class Cadastro {
 					return objProduto;
 				}
 			}
-			throw new SisVendasException("Não existe produto para o código informado!");
+			throw new SisVendasException("NÃ£o existe produto para o cÃ³digo informado!");
 		}
 		
 		
@@ -125,7 +125,7 @@ public class Cadastro {
 		
 		
 		
-		//Métodos para controle de vendas
+		//MÃ©todos para controle de vendas
 		public static void incluirVenda (Venda objVenda) {
 			venda.add(objVenda);
 		}
@@ -141,7 +141,7 @@ public class Cadastro {
 					return objVenda;
 				}
 			}
-			throw new SisVendasException("Não existe venda para o código informado!");
+			throw new SisVendasException("NÃ£o existe venda para o cÃ³digo informado!");
 		}
 		
 		
@@ -164,8 +164,8 @@ public class Cadastro {
 		
 		
 		
-		
-}
+	
+
 class ClientePorNome implements Comparator<Cliente> {
 
 	@Override
