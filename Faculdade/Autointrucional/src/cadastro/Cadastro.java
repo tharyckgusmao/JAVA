@@ -8,9 +8,16 @@ import dados.Venda;
 
 public class Cadastro {
 
-	public static ArrayList<Cliente> clientes;
-	public static ArrayList<Produto> produtos;
-	public static ArrayList<Venda> vendas;
+	public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	public static ArrayList<Produto> produtos = new ArrayList<Produto>();
+	public static ArrayList<Venda> vendas = new ArrayList<Venda>();
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }
