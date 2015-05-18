@@ -10,7 +10,21 @@ import dados.Produto;
 import dados.Venda;
 import erros.SisVendasException;
 
+/**
+ * Classe Cadastro, que tem por seu objetivo a ponte para gravacacao de objetos
+ * nos ArraysList metodos de pesquisa nos mesmos.
+ *
+ * @author Tharyck Gusmao Metzker
+ */
 public class Cadastro {
+
+	/**
+	 * Contrutor vazio Tres variaveis do tipo
+	 * ArrayList<Cliente>,ArrayList<Produto> e ArrayList<Venda>. Para
+	 * armazenamento de objetos nas mesmas;
+	 *
+	 * @author Tharyck Gusmao Metzker
+	 */
 
 	public static ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 	public static ArrayList<Produto> produto = new ArrayList<Produto>();
@@ -20,14 +34,40 @@ public class Cadastro {
 
 	}
 
+	/**
+	 * Metodo para inclusao de cliente no Arraylist<Cliente> adiciona um objeto
+	 * passado por referencia.
+	 *
+	 * @param Cliente
+	 *            .
+	 * @author Tharyck Gusmao Metzker
+	 */
 	public static void incluirCliente(Cliente objCliente) {
 		clientes.add(objCliente);
 	}
 
+	/**
+	 * Metodo para exclusao de cliente no Arraylist<Cliente> exclui um objeto
+	 * passado por referencia.
+	 *
+	 * @param Cliente
+	 *            .
+	 * @author Tharyck Gusmao Metzker
+	 */
 	public static void excluirCliente(Cliente objCliente) {
 		clientes.remove(objCliente);
 	}
 
+	/**
+	 * Metodo do tipo Cliente para buscar um objeto no ArraList<Cliente> com
+	 * excercao de erros pela clase SisVendasException. Pecorre todo o arrayList
+	 * do tipo clientes, Valida se o objeto dentro do array possui a variavel
+	 * passada por referencia igual. Se for verdade retorna obejto.
+	 *
+	 * @param int.
+	 * @return Objeto Cliente.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	public static Cliente buscarClienteCod(int cod) throws SisVendasException {
 		for (Cliente objCliente : clientes) {
 			if (objCliente.getCodigo() == cod) {
@@ -37,6 +77,18 @@ public class Cadastro {
 		throw new SisVendasException(
 				"Não existe cliente para o código informado!");
 	}
+
+	/**
+	 * Metodo do tipo Cliente para buscar um objeto no ArraList<Cliente> com
+	 * excercao de erros pela clase SisVendasException. Pecorre todo o arrayList
+	 * do tipo clientes, Valida se o objeto dentro do array possui a variavel
+	 * passada por referencia igual. Se for verdade retorna obejto.
+	 *
+	 * @param String
+	 *            .
+	 * @return Objeto Cliente.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 
 	public static Cliente buscarClienteCPF(String cpf)
 			throws SisVendasException {
@@ -48,6 +100,17 @@ public class Cadastro {
 		throw new SisVendasException("Não existe cliente para o cpf informado!");
 	}
 
+	/**
+	 * Metodo do tipo Cliente para buscar um objeto no ArraList<Cliente> trata
+	 * excecoes de erros pela classe SisVendasException. Pecorre todo o
+	 * arrayList do tipo clientes, Valida se o objeto dentro do array possui a
+	 * variavel passada por referencia igual. Se for verdade retorna obejto.
+	 *
+	 * @param String
+	 *            .
+	 * @return Objeto Cliente.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	public static Cliente buscarClienteNome(String nome)
 			throws SisVendasException {
 		for (Cliente objCliente : clientes) {
@@ -57,6 +120,19 @@ public class Cadastro {
 		}
 		throw new SisVendasException("Não existe cliente para o cpf informado!");
 	}
+
+	/**
+	 * Metodo do tipo Arraylist<Cliente>, com finalidade de percorrer o
+	 * arrayList e ordernar-lo. Percorrer o arrayList do tipo Clientes, valida
+	 * se o objeto pertence ao mesmo e add em outro arrayList<Cliente> auxiliar,
+	 * Valida se a valores dentro do ArrayList<Clientes> auxiliar, se for
+	 * verdade ele orderna os valores, pelo metodo customizado Collections.sort.
+	 *
+	 * @param String
+	 *            .
+	 * @return ArrayList<Cliente>.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 
 	public static ArrayList<Cliente> buscarClienteNomeOrdem(String nome)
 			throws SisVendasException {
@@ -74,14 +150,40 @@ public class Cadastro {
 		}
 	}
 
-	// Métodos para produto
+	/**
+	 * Metodo para inclusao de Produto no Arraylist<Produto> adiciona um objeto
+	 * passado por referencia.
+	 *
+	 * @param Produto
+	 *            .
+	 * @author Tharyck Gusmao Metzker
+	 */
 	public static void incluirProduto(Produto objProduto) {
 		produto.add(objProduto);
 	}
 
+	/**
+	 * Metodo para exclui de Produto no Arraylist<Produto> exclui um objeto
+	 * passado por referencia.
+	 *
+	 * @param Produto
+	 *            .
+	 * @author Tharyck Gusmao Metzker
+	 */
 	public static void excluirProduto(Produto objProduto) {
 		produto.remove(objProduto);
 	}
+
+	/**
+	 * Metodo do tipo Cliente para buscar um objeto no ArraList<Produto> trata
+	 * excecoes de erros pela classe SisVendasException. Pecorre todo o
+	 * arrayList do tipo Produto, Valida se o objeto dentro do array possui a
+	 * variavel passada por referencia igual. Se for verdade retorna obejto.
+	 *
+	 * @param int.
+	 * @return Objeto Produto.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 
 	public static Produto buscarProdutoCod(int cod) throws SisVendasException {
 		for (Produto objProduto : produto) {
@@ -93,6 +195,19 @@ public class Cadastro {
 				"Não existe produto para o código informado!");
 	}
 
+	/**
+	 * Metodo do tipo Arraylist<Produto>, com finalidade de percorrer o
+	 * arrayList e ordernar-lo. Percorrer o arrayList do tipo Produto, valida se
+	 * o objeto pertence ao mesmo e adiciona em outro arrayList<Produto>
+	 * auxiliar, Valida se a valores dentro do ArrayList<Produto> auxiliar, se
+	 * for verdade ele orderna os valores, pelo metodo customizado
+	 * Collections.sort.
+	 *
+	 * @param String
+	 *            .
+	 * @return ArrayList<Cliente>.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	public static ArrayList<Produto> buscarProdutoNome(String nome)
 			throws SisVendasException {
 		ArrayList<Produto> resposta = new ArrayList<Produto>();
@@ -109,17 +224,40 @@ public class Cadastro {
 		}
 	}
 
-		
-	
-	
-	// Métodos para controle de vendas
+	/**
+	 * Metodo para inclusao de Venda no Arraylist<Venda> adiciona um objeto
+	 * passado por referencia.
+	 *
+	 * @param Venda
+	 *            .
+	 * @author Tharyck Gusmao Metzker
+	 */
 	public static void incluirVenda(Venda objVenda) {
 		venda.add(objVenda);
 	}
 
+	/**
+	 * Metodo para exclusao de Venda no Arraylist<Venda> adiciona um objeto
+	 * passado por referencia.
+	 *
+	 * @param Venda
+	 *            .
+	 * @author Tharyck Gusmao Metzker
+	 */
 	public static void excluirVenda(Venda objVenda) {
 		venda.remove(objVenda);
 	}
+
+	/**
+	 * Metodo do tipo Venda para buscar um objeto no ArraList<Venda> com
+	 * excercao de erros pela clase SisVendasException. Pecorre todo o arrayList
+	 * do tipo Venda, Valida se o objeto dentro do array possui a variavel
+	 * passada por referencia igual. Se for verdade retorna obejto.
+	 *
+	 * @param int.
+	 * @return Objeto Venda.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 
 	public static Venda buscarVendaCod(int cod) throws SisVendasException {
 
@@ -132,6 +270,18 @@ public class Cadastro {
 				"Não existe venda para o código informado!");
 	}
 
+	/**
+	 * Metodo do tipo Arraylist<Venda>, com finalidade de percorrer o arrayList
+	 * e ordernar-lo reversamente. Percorrer o arrayList do tipo Venda, valida
+	 * se o objeto pertence ao mesmo e adiciona em outro arrayList<Venda>
+	 * auxiliar, Valida se a valores dentro do ArrayList<Venda> auxiliar, se for
+	 * verdade ele orderna os valores, pelo metodo customizado Collections.sort.
+	 *
+	 * @param Cliente
+	 *            .
+	 * @return ArrayList<Venda>.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	public static ArrayList<Venda> buscarVendaClienteNome(Cliente cli)
 			throws SisVendasException {
 		ArrayList<Venda> resposta = new ArrayList<Venda>();
@@ -149,6 +299,19 @@ public class Cadastro {
 		}
 	}
 
+	/**
+	 * Metodo do tipo Arraylist<Venda>, com finalidade de percorrer o arrayList
+	 * e ordernar-lo reversamente pelo perido de data informado pelo usuario.
+	 * Percorrer o arrayList do tipo Venda, valida se o objeto pertence ao mesmo
+	 * e adiciona em outro arrayList<Venda> auxiliar, Valida se a valores dentro
+	 * do ArrayList<Venda> auxiliar, se for verdade ele orderna os valores, pelo
+	 * metodo customizado Collections.sort.
+	 *
+	 * @param GregorianCalendar
+	 *            , GregorianCalendar.
+	 * @return ArrayList<Venda>.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	public static ArrayList<Venda> vendaClientePerido(GregorianCalendar data1,
 			GregorianCalendar data2) {
 		ArrayList<Venda> resposta = new ArrayList<Venda>();
@@ -179,24 +342,44 @@ public class Cadastro {
 		return resposta;
 	}
 
-	
-
+	/**
+	 * Metodo bolleano para validar se a obejtos do tipo Produto cadastrado nos
+	 * obejtos do tipo venda.
+	 *
+	 * @param Produto
+	 *            .
+	 * @return True e false.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	public static boolean pesqProdtoVenda(Produto buscarProdutoCod) {
-		// TODO Auto-generated method stub
-			for(Venda objVenda : venda){
-				
-				
-				objVenda.getVendaItens().contains(buscarProdutoCod);
-				return true;
-			}
-		
+		for (Venda objVenda : venda) {
+
+			objVenda.getVendaItens().contains(buscarProdutoCod);
+			return true;
+		}
+
 		return false;
-	
+
 	}
 
 }
 
+/**
+ * Classe ClientPorNome onde implementa os metodos definidos na interface
+ * Comparator.
+ *
+ * @author Tharyck Gusmao Metzker.
+ */
+
 class ClientePorNome implements Comparator<Cliente> {
+
+	/**
+	 * Override do metodo compare localizado na interface Comparator, com o
+	 * bjetivo de comprar dois objetos.
+	 *
+	 * @return int retornado pelo metodo compareTo.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 
 	@Override
 	public int compare(Cliente o1, Cliente o2) {
@@ -205,8 +388,21 @@ class ClientePorNome implements Comparator<Cliente> {
 
 }
 
-class ProdutoPorNome implements Comparator<Produto> {
+/**
+ * Classe ProdutoPorNome onde implementa os metodos definidos na interface
+ * Comparator.
+ *
+ * @author Tharyck Gusmao Metzker.
+ */
 
+class ProdutoPorNome implements Comparator<Produto> {
+	/**
+	 * Override do metodo compare localizado na interface Comparator, com o
+	 * bjetivo de comprar dois objetos.
+	 *
+	 * @return int retornado pelo metodo compareTo.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	@Override
 	public int compare(Produto o1, Produto o2) {
 		return o1.getNome().compareTo(o2.getNome());
@@ -214,8 +410,20 @@ class ProdutoPorNome implements Comparator<Produto> {
 
 }
 
+/**
+ * Classe VendaPorCliente onde implementa os metodos definidos na interface
+ * Comparator.
+ *
+ * @author Tharyck Gusmao Metzker.
+ */
 class VendaPorCliente implements Comparator<Venda> {
-
+	/**
+	 * Override do metodo compare localizado na interface Comparator, com o
+	 * bjetivo de comprar dois objetos.
+	 *
+	 * @return int retornado pelo subtracao do atributo dentro dos objetos..
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	@Override
 	public int compare(Venda o1, Venda o2) {
 		return o1.getNumVenda() - o2.getNumVenda();
@@ -223,8 +431,20 @@ class VendaPorCliente implements Comparator<Venda> {
 
 }
 
+/**
+ * Classe ordenaVendasClientesPeriodo onde implementa os metodos definidos na
+ * interface Comparator.
+ *
+ * @author Tharyck Gusmao Metzker.
+ */
 class ordenaVendasClientesPeriodo implements Comparator<Venda> {
-
+	/**
+	 * Override do metodo compare localizado na interface Comparator, com o
+	 * bjetivo de comprar dois objetos.
+	 *
+	 * @return int retornado pelo metodo compareTo.
+	 * @author Tharyck Gusmao Metzker.
+	 */
 	@Override
 	public int compare(Venda obj1, Venda obj2) {
 		int resp = obj1.getCliente().getNome()
