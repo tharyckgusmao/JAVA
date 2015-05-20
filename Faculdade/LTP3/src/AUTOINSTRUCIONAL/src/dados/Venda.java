@@ -37,6 +37,7 @@ public class Venda implements Serializable {
 		numVenda = sequence++;
 		this.cliente = cliente;
 		this.dataVenda = dataVenda;
+		this.vendaItens = vendaItens;
 	}
 
 	/**

@@ -321,6 +321,10 @@ public class Usuario {
 				vendaClientePerido();
 				
 				break;
+				case 5:
+					estastiscaVenda();
+					
+					break;
 				case 6:
 				System.out.println(" \t --- Voltando menu anterior  ---");
 				break;
@@ -333,6 +337,107 @@ public class Usuario {
 		
 	}
 	
+	private static void estastiscaVenda() {
+		
+		String data;
+		GregorianCalendar dt1 = new GregorianCalendar();
+		GregorianCalendar dt2 = new GregorianCalendar();
+		Cliente cli = null;
+		int vendas =1;
+		double total =0;
+		String nome;
+		
+		
+		
+		while(true){
+			try{
+			
+			do{
+				nome = Console.readLine("NOME: ");
+				
+				
+			}while(!nome.matches(""));
+			cli= Cadastro.buscarClienteNome(nome);
+			if(cli ==null){
+				
+				System.out.println("Nao existe nenhum cliente para o nome :");
+				continue;
+			}
+			break;
+			
+			
+		}catch(SisVendasException erro){
+			
+			System.err.println(erro.getMessage());
+		}
+		
+		}
+		
+		
+		
+		
+		do {
+			
+			data = Console
+			.readLine("Favor informar a data1 :\n EX: DD/MM/YYYY ");
+			
+			if (!LtpUtil.validarData(data, dt1)) {
+				System.out.println("Data invalida.");
+				continue;
+			}
+			
+			if (dt1.after(new GregorianCalendar())) {
+				System.out.println(" Data maior que a data atual !!");
+			}
+			
+		} while ((data.matches("^(\\d{2}\\/\\d{2}\\/\\d{4})$"))
+		&& (dt1.after(new GregorianCalendar())));
+		
+		do {
+			
+			data = Console
+			.readLine("Favor informar a data2 :\n EX: DD/MM/YYYY ");
+			
+			if (!LtpUtil.validarData(data, dt2)) {
+				System.out.println("Data invalida.");
+				continue;
+			}
+			
+			if (dt2.after(new GregorianCalendar())) {
+				System.out.println(" Data maior que a data atual !!");
+			}
+			
+		} while ((data.matches("^(\\d{2}\\/\\d{2}\\/\\d{4})$"))
+		&& (dt2.after(new GregorianCalendar())));
+		
+		ArrayList<Venda> resp = Cadastro.vendaClientePerido(dt1, dt2);
+		ArrayList<ItemVenda> resp1 = new ArrayList<ItemVenda>();
+		
+		
+		for(Venda objVEnda :resp){
+			
+			if(objVEnda.getCliente().getNome().equals(nome));
+			{
+				resp1 = objVEnda.getVendaItens();
+				
+				for(ItemVenda objItem : resp1){
+					
+					total +=objItem.getValorVenda();
+					vendas = vendas++;
+					
+				}
+				
+			}
+			
+			
+		}
+		
+		System.out.println("Estastica cliente : " + nome);
+		System.out.println("Numero de produto comprados : " + vendas);
+		System.out.println("Valor total de compras: " + total );
+		
+		
+	}
 	/**
 		* Método responsável pelo cadastro de clientes.
 		*	Realiza a inclusao do objeto Cliente pela chamada do metodo Cadastro.incluirCliente
