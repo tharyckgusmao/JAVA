@@ -110,7 +110,7 @@ public class Cadastro {
 				return objCliente;
 			}
 		}
-		throw new SisVendasException("Não existe cliente para o cpf informado!");
+		throw new SisVendasException("Não existe cliente para o nome informado!");
 	}
 
 	/**

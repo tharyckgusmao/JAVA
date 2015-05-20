@@ -343,7 +343,7 @@ public class Usuario {
 		GregorianCalendar dt1 = new GregorianCalendar();
 		GregorianCalendar dt2 = new GregorianCalendar();
 		Cliente cli = null;
-		int vendas =1;
+		int vendas = 0;
 		double total =0;
 		String nome;
 		
@@ -356,7 +356,7 @@ public class Usuario {
 				nome = Console.readLine("NOME: ");
 				
 				
-			}while(!nome.matches(""));
+			}while(!nome.matches("^(\\D*)+(\\s*)+(\\D)$"));
 			cli= Cadastro.buscarClienteNome(nome);
 			if(cli ==null){
 				
@@ -419,11 +419,10 @@ public class Usuario {
 			if(objVEnda.getCliente().getNome().equals(nome));
 			{
 				resp1 = objVEnda.getVendaItens();
-				
 				for(ItemVenda objItem : resp1){
 					
 					total +=objItem.getValorVenda();
-					vendas = vendas++;
+					vendas++;
 					
 				}
 				

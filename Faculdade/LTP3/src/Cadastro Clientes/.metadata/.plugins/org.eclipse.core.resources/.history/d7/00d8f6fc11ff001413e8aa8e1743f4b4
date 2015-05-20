@@ -1,0 +1,55 @@
+
+public class HttpClientFormAuthentication {
+    public static void main(String[] agrs) {
+        String host = "yourhostname.com";
+        int port = 8080;
+        String protocol = "http";
+ 
+        DefaultHttpClient client = new DefaultHttpClient();
+ 
+        try {
+            HttpHost httpHost = new HttpHost(host, port, protocol);
+            client.getParams().setParameter(ClientPNames.DEFAULT_HOST, httpHost);
+ 
+            HttpGet securedResource = new HttpGet("/secured/index.jsp");            
+            HttpResponse httpResponse = client.execute(securedResource);
+            HttpEntity responseEntity = httpResponse.getEntity();
+            String strResponse = EntityUtils.toString(responseEntity);
+            int statusCode = httpResponse.getStatusLine().getStatusCode();
+            EntityUtils.consume(responseEntity);
+ 
+            System.out.println("Http status code for Unauthenticated Request: " + statusCode);// Statue code should be 200
+            System.out.println("Response for Unauthenticated Request: \n" + strResponse); // Should be login page
+            System.out.println("================================================================\n");
+ 
+            HttpPost authpost = new HttpPost("/j_security_check");
+            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
+            nameValuePairs.add(new BasicNameValuePair("j_username", "yourusername"));
+            nameValuePairs.add(new BasicNameValuePair("j_password", "yourpassword"));
+            authpost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+ 
+            httpResponse = client.execute(authpost);
+            responseEntity = httpResponse.getEntity();
+            strResponse = EntityUtils.toString(responseEntity);
+            statusCode = httpResponse.getStatusLine().getStatusCode();
+            EntityUtils.consume(responseEntity);
+ 
+            System.out.println("Http status code for Authenticattion Request: " + statusCode);// Status code should be 302
+            System.out.println("Response for Authenticattion Request: \n" + strResponse); // Should be blank string
+            System.out.println("================================================================\n");
+ 
+            httpResponse = client.execute(securedResource);
+            responseEntity = httpResponse.getEntity();
+            strResponse = EntityUtils.toString(responseEntity);
+            statusCode = httpResponse.getStatusLine().getStatusCode();
+            EntityUtils.consume(responseEntity);
+ 
+            System.out.println("Http status code for Authenticated Request: " + statusCode);// Status code should be 200
+            System.out.println("Response for Authenticated Request: \n" + strResponse);// Should be actual page
+            System.out.println("================================================================\n");
+        }
+        catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+}
